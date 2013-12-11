@@ -43,12 +43,19 @@ compress (a:b)
     ["aaaa","b","cc","aa","d","eeee"]
 -}
 pack [] = []
-pack (a:b) = [a] ++ pack( snd sublist )
-            where sublist = span (==a) b
-
+pack (a:b) = [same] ++ pack diff
+    where (same,diff) = span (==a) (a:b)
 
 -- 10) run-length encoding of a list
 {-
     encode "aaaabccaadeeee"
     [(4,'a'),(1,'b'),(2,'c'),(2,'a'),(1,'d'),(4,'e')]
+
+    Example usage of span
+    Prelude> span (=="a") ["a","a","b","c"]
+    (["a","a"],["b","c"])
+
 -}
+runlength [] = []
+runlength (a:b) = [(length same, a)] ++ runlength diff
+    where (same,diff) = span (==a) (a:b)
