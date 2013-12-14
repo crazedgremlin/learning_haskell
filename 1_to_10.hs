@@ -56,6 +56,4 @@ pack (a:b) = [same] ++ pack diff
     (["a","a"],["b","c"])
 
 -}
-runlength [] = []
-runlength (a:b) = [(length same, a)] ++ runlength diff
-    where (same,diff) = span (==a) (a:b)
+runlength xs = map (\a -> (length a,head a)) (pack xs)
