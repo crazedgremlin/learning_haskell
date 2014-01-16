@@ -70,3 +70,25 @@ repli (x:xs) n = [x | _<-[1..n]] ++ repli xs n
 16) Drop every nth element from list
 -}
 dropEvery list n = [list !! (i-1) | i<-[1..length list], i `mod` n /= 0]
+
+{-
+17) split without predefined predicates
+
+Cheating answer:
+split list n = (take n list, drop n list)
+
+Let's just define take and drop by hand so we're not cheating.
+-}
+
+split list n = (take' n list, drop' n list)
+      where
+        take' _ [] = []
+        take' 0 xs = []
+        take' m (x:xs) = [x] ++ take' (m-1) xs
+
+        drop' _ [] = []
+        drop' 0 xs = xs
+        drop' m (x:xs) = drop' (m-1) xs
+
+        len [] = []
+        len (x:xs) = 1 + len xs
