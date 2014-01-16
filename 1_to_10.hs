@@ -1,6 +1,8 @@
 -- Haskell 99 Questions
 -- http://www.haskell.org/haskellwiki/99_questions/1_to_10
 
+module PartOne (runlength) where
+
 -- 1) get last element from list 
 myLast [a] = a
 myLast list = myLast( tail list)
