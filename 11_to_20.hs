@@ -53,4 +53,20 @@ encodeDirect list = encode list
 -}
 
 
-    
+{-
+14) Duplicate elements in list
+-}
+
+dupli [] = []
+dupli (x:xs) = [x,x] ++ dupli xs
+
+{-
+15) replicate elements n times
+-}
+repli [] n = []
+repli (x:xs) n = [x | _<-[1..n]] ++ repli xs n
+
+{-
+16) Drop every nth element from list
+-}
+dropEvery list n = [list !! (i-1) | i<-[1..length list], i `mod` n /= 0]
