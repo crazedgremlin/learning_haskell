@@ -82,13 +82,12 @@ Let's just define take and drop by hand so we're not cheating.
 
 split list n = (take' n list, drop' n list)
       where
+        -- take the first m elements from the list
         take' _ [] = []
-        take' 0 xs = []
+        take' 0 _ = []
         take' m (x:xs) = [x] ++ take' (m-1) xs
 
+        -- take the last m elements from the list
         drop' _ [] = []
         drop' 0 xs = xs
         drop' m (x:xs) = drop' (m-1) xs
-
-        len [] = []
-        len (x:xs) = 1 + len xs
