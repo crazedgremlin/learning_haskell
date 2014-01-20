@@ -109,3 +109,11 @@ slice list from to = take (to-from+1) (drop (from-1) list)
 
 rotate list 0 = list
 rotate (x:xs) n = rotate (xs ++ [x]) (n-1)
+
+{-
+20) Remove Kth element from list
+-}
+removeAt k list = (removed, newList)
+         where (left,right) = splitAt k list
+               newList = (init left) ++ right
+               removed = last left
