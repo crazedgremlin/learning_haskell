@@ -1,4 +1,5 @@
 import Data.List
+import PartOne (runlength)
 
 -- 11) Modified run-length encoding
 {-
@@ -10,12 +11,6 @@ import Data.List
 data Elem a = Single a | Multiple Int a
     deriving (Show)
 
--- function #10 copied-and-pasted --------------------------
-pack [] = []
-pack (a:b) = [same] ++ pack diff
-    where (same,diff) = span (==a) (a:b)
-runlength xs = map (\a -> (length a,head a)) (pack xs)
--------------------------------------------------------------
 encodeModified list = parse (runlength list)
     where
         parse [] = []
