@@ -100,3 +100,12 @@ slice [1,2,3,4,5,6,7] 3 6
 
 -}
 slice list from to = take (to-from+1) (drop (from-1) list)
+
+
+
+{-
+19) Rotate a list N places to the left
+-}
+
+rotate list 0 = list
+rotate (x:xs) n = rotate (xs ++ [x]) (n-1)
