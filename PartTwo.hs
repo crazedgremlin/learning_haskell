@@ -8,11 +8,13 @@ import PartOne (runlength)
      Multiple 2 'a',Single 'd',Multiple 4 'e']
 -}
 
-data Elem a = Single a | Multiple Int a
+data ListItem a = Single a | Multiple Int a
     deriving (Show)
 
+encodeModified :: (Eq a) => [a] -> [ListItem a]
 encodeModified list = parse (runlength list)
     where
+        parse :: [(Int,a)] -> [ListItem a]
         parse [] = []
         parse ((count,elem):tuples)
           | count == 1      =       (Single elem) : parse tuples
