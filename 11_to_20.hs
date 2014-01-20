@@ -91,3 +91,12 @@ split list n = (take' n list, drop' n list)
         drop' _ [] = []
         drop' 0 xs = xs
         drop' m (x:xs) = drop' (m-1) xs
+
+
+{-
+18) extract a slice from a list
+
+slice [1,2,3,4,5,6,7] 3 6
+
+-}
+slice list from to = take (to-from+1) (drop (from-1) list)
