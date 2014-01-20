@@ -1,3 +1,5 @@
+module Scratch (quicksort) where
+
 {-
     Quicksort in Haskell.
 
